@@ -1,24 +1,71 @@
 import React from 'react'
 
+
+
 function Form() {
+
+    const [cita, setCita] = React.useState({
+        mascota: '',
+        propietario: '',
+        fecha: '',
+        hora: '',
+        sintomas: '',
+
+    })
+    const {mascota, propietario, fecha, hora, sintomas} = cita
+
+    const [error, setError] = React.useState(false)
+
+
+    const handleChange = (e) => {
+          setCita({
+              ...cita,
+              [e.target.name]: e.target.value
+
+          })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(!mascota.trim() || !propietario.trim() || !fecha.trim() || !hora.trim() || !sintomas.trim()){
+             setError(true)
+             console.log(error)
+             return
+        }
+        console.log('exito')
+    }
+
     return (
         <div>
             <h2>Crear Cita</h2>
-            <form >
+
+            {
+                error ? (
+                    <p className="alerta-error">
+                        Error: Todos los campos son obligatorios 
+                    </p>
+                )    : null
+            }
+            <form onSubmit={handleSubmit}>
               <label htmlFor="">Nombre Mascota</label>
               <input 
               type="text"
               name="mascota"
               className="u-full-width"
               placeholder="Nombre de Mascota"
+              onChange={handleChange}
+              value={mascota}
                />
 
              <label htmlFor="">Nombre del Propietario</label>
               <input 
               type="text"
-              name="mascota"
+              name="propietario"
               className="u-full-width"
               placeholder="Nombre del Propietario"
+              onChange={handleChange}
+              value={propietario}
+
                /> 
 
              <label htmlFor="">Fecha</label>
@@ -26,6 +73,9 @@ function Form() {
               type="date"
               name="fecha"
               className="u-full-width"
+              onChange={handleChange}
+              value={fecha}
+
                /> 
 
               <label htmlFor="">Hora</label>
@@ -33,6 +83,9 @@ function Form() {
               type="time"
               name="hora"
               className="u-full-width"
+              onChange={handleChange}
+              value={hora}
+
                /> 
 
             <label htmlFor="">Sintomas</label>
@@ -41,7 +94,10 @@ function Form() {
               name="sintomas"
               id=""
               cols="30"
-              rows="10">
+              rows="10"
+              onChange={handleChange}
+              value={sintomas}
+              >
 
                </textarea>
 
