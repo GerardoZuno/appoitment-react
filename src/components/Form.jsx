@@ -2,7 +2,7 @@ import React from 'react'
 import {v4 as uuid} from "uuid";
 
 
-function Form() {
+function Form({addAppointment}) {
 
     const [cita, setCita] = React.useState({
         mascota: '',
@@ -35,7 +35,15 @@ function Form() {
         setError(false)
 
         cita.id = uuid()
-        console.log(cita)
+        addAppointment(cita)
+        setCita({
+            mascota: '',
+            propietario: '',
+            fecha: '',
+            hora: '',
+            sintomas: '',
+    
+        })
     }
 
     return (
