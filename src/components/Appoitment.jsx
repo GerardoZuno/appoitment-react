@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types'
+
 
 function Appoitment({cita, deleteAppoitement}) {
 
@@ -23,4 +25,10 @@ function Appoitment({cita, deleteAppoitement}) {
   );
 }
 
+
+Appoitment.propTypes = {
+    deleteAppoitement: PropTypes.func.isRequired,
+    cita: PropTypes.object.isRequired
+
+}
 export default Appoitment;

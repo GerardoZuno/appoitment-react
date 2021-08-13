@@ -1,5 +1,7 @@
 import React from 'react'
 import {v4 as uuid} from "uuid";
+import PropTypes from 'prop-types'
+
 
 
 function Form({addAppointment}) {
@@ -9,7 +11,7 @@ function Form({addAppointment}) {
         propietario: '',
         fecha: '',
         hora: '',
-        sintomas: '',
+        sintomas: ''
 
     })
     const {mascota, propietario, fecha, hora, sintomas} = cita
@@ -122,6 +124,11 @@ function Form({addAppointment}) {
             </form>
         </div>
     )
+}
+
+Form.propTypes = {
+    addAppointment: PropTypes.func.isRequired
+
 }
 
 export default Form

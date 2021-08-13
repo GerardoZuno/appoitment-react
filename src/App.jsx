@@ -11,7 +11,7 @@ const App = () => {
     initialAppoitments = []
   }
 
-  const [citas, setCitas] = useState([initialAppoitments])
+  const [citas, setCitas] = useState(initialAppoitments)
 
 
   const addAppointment = (cita) => {
@@ -68,5 +68,7 @@ const App = () => {
     </>
   )
 }
+
+
 
 export default App
