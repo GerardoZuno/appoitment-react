@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {v4 as uuid} from "uuid";
 
 
 function Form() {
@@ -32,7 +32,10 @@ function Form() {
              console.log(error)
              return
         }
-        console.log('exito')
+        setError(false)
+
+        cita.id = uuid()
+        console.log(cita)
     }
 
     return (
